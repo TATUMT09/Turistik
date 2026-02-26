@@ -38,3 +38,9 @@ out/
 
 ### Kotlin ###
 .kotlin
+### Gradle ###
+.gradle/
+build/
+
+### Uploads ###
+uploads/
