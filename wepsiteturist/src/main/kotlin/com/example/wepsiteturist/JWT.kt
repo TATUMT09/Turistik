@@ -12,11 +12,14 @@ import jakarta.servlet.FilterChain
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
 import org.springframework.beans.factory.annotation.Value
+import org.springframework.context.annotation.Configuration
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 
 import org.springframework.security.core.context.SecurityContextHolder
 
 import org.springframework.web.filter.OncePerRequestFilter
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 
 
 @Component
@@ -96,7 +99,14 @@ class JwtFilter(
         chain.doFilter(req, res)
     }
 }
+@Configuration
+class WebConfig : WebMvcConfigurer {
 
+    override fun addResourceHandlers(registry: ResourceHandlerRegistry) {
+        registry.addResourceHandler("/uploads/**")
+            .addResourceLocations("file:uploads/")
+    }
+}
 
 
 

@@ -82,7 +82,8 @@ class SecurityConfig(
                     "/v3/api-docs/**",
                     "/i/**",
                     "/api/images/*/likes",
-                    "/api/images/*/comments"
+                    "/api/images/*/comments",
+                    "/uploads/**"
                 ).permitAll()
 
                 auth.requestMatchers(HttpMethod.POST, "/api/users").permitAll()
